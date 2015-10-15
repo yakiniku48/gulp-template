@@ -7,18 +7,27 @@
 var gulp = require( "gulp" );
 
 var autoprefixer = require( "gulp-autoprefixer" );
-var cached       = require( "gulp-cached" );
-var imagemin     = require( "gulp-imagemin" );
-var plumber      = require( "gulp-plumber" );
-var sass         = require( "gulp-ruby-sass" );
-var uglify       = require( "gulp-uglify" );
-var pngquant     = require( "imagemin-pngquant");
+var cached		 = require( "gulp-cached" );
+var browsersync	 = require( "browser-sync" );
+var imagemin	 = require( "gulp-imagemin" );
+var plumber		 = require( "gulp-plumber" );
+var pngquant	 = require( "imagemin-pngquant");
+var sass		 = require( "gulp-ruby-sass" );
+var uglify		 = require( "gulp-uglify" );
 
 gulp.task( "default", function () {
 	gulp.watch( "./assets/src/js/**/*.js", [ "js" ] );
 	gulp.watch( "./assets/src/sass/**/*.scss", [ "sass" ] );
+	gulp.watch( [ "./**/*.html", "./**/*.css", "./**/*.js" ], function () {
+		browserSync.reload();
+	});
 } );
 
+gulp.task( "js", function () {
+	return gulp.src( "./assets/src/js/**/*.js" )
+		.pipe( uglify() )
+		.pipe( gulp.dest( "./assets/js" ) );
+});
 gulp.task( "sass", function () {
 	return sass( "./assets/src/sass/", { compass: true, style: 'expanded' })
 		.pipe( plumber() )
@@ -26,10 +35,14 @@ gulp.task( "sass", function () {
 		.pipe( autoprefixer() )
 		.pipe( gulp.dest( "./assets/css" ) );
 } );
-gulp.task( "js", function () {
-	return gulp.src( "./assets/src/js/**/*.js" )
-		.pipe( uglify() )
-		.pipe( gulp.dest( "./assets/js" ) );
+gulp.task( "browser-sync", function () {
+	browserSync( {
+		server: {
+			baseDir: "./"
+		},
+		// external 指定すると、実行時のアクセスURLがIPアドレス指定側で開くことができる
+		open: 'external',
+	});
 });
 
 /* defaultには追加しない（だって時間的コスト大きいやん） */
