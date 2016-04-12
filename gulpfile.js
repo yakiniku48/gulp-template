@@ -29,7 +29,7 @@ gulp.task( "js", function () {
 		.pipe( gulp.dest( "./assets/js" ) );
 } );
 gulp.task( "sass", function () {
-	return sass( "./assets/src/sass/", { compass: true, style: 'expanded' })
+	return sass( "./assets/src/sass/*.scss", { compass: true, style: "expanded" } )
 		.pipe( plumber() )
 		.pipe( cached( "sass" ) )
 		.pipe( autoprefixer() )
