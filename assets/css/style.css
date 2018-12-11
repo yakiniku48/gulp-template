@@ -412,20 +412,21 @@ body {
 
 h1 {
   color: red;
-  -webkit-transition: 200ms ease-out transform;
   transition: 200ms ease-out transform;
 }
+
 h1:hover {
   color: blue;
 }
 
 h2 {
-  color: blue;
+  color: green;
 }
 
 a {
   color: #00f;
 }
+
 a:hover, a:active, a:focus {
   color: #6666ff;
 }

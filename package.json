@@ -6,21 +6,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Hideyuki MOTOO",
   "repository": {
     "type": "git",
-    "url": "git@github.com:yakiniku48/gulp-template.git"
+    "url": "git+https://github.com/yakiniku48/gulp-template.git"
   },
+  "keywords": [],
+  "author": "",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yakiniku48/gulp-template/issues"
+  },
+  "homepage": "https://github.com/yakiniku48/gulp-template#readme",
   "devDependencies": {
-    "browser-sync": "^2.9.11",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-cached": "^1.1.0",
-    "gulp-imagemin": "^2.3.0",
-    "gulp-plumber": "^1.0.1",
-    "gulp-ruby-sass": "^2.0.6",
-    "gulp-uglify": "^1.2.0",
-    "imagemin-pngquant": "^4.1.2"
+    "gulp": "^4.0.0",
+    "gulp-sass": "^4.0.2"
   }
 }
